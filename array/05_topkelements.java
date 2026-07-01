@@ -36,3 +36,46 @@ class Solution {
         return ans;
     }
 }
+
+
+
+
+
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        List<Integer>freq[]=new List[nums.length+1];
+
+        for(int i=0;i<freq.length;i++)
+        {
+            freq[i]=new ArrayList<>();
+        }
+
+        for (int s : nums) {
+            map.put(s, map.getOrDefault(s, 0) + 1);
+        }
+        for(Map.Entry<Integer,Integer>ent:map.entrySet())
+        {
+            freq[ent.getValue()].add(ent.getKey());
+
+        }
+        int[] ans=new int[k];
+int index=0;
+        for(int j=freq.length-1;j>0 ;j--)
+        {
+            for( int s: freq[j])
+            {
+
+                ans[index++]=s;
+                if(k==index)
+                {
+                    return ans;
+                }
+            }
+        }
+
+
+       
+        return ans;
+    }
+}
