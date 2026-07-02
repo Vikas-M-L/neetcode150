@@ -43,7 +43,6 @@ class Solution {
     public boolean isValidSudoku(char[][] board) {
         for (int i = 0; i < 9; i++) {
             boolean row = check_row(board, i);
-
             boolean col = check_col(board, i);
             if (row == false || col == false)
                 return false;
