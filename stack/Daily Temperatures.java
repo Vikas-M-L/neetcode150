@@ -26,3 +26,21 @@ class Solution {
 
 
 
+class Solution {
+    public int[] dailyTemperatures(int[] temp) {
+        int []ans=new int[temp.length];
+        Deque<int[] >stack=new ArrayDeque<>();
+
+        for(int i=0;i<temp.length;i++)
+        {
+           
+            int te=temp[i];
+            while(!stack.isEmpty()&&te>stack.peek()[0]){
+            int []pair=stack.pop();
+            ans[pair[1]]=i-pair[1];
+            }
+ stack.push(new int []{te,i});
+        }
+        return ans;
+    }
+}
